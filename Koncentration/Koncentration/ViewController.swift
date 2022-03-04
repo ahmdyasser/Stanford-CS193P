@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
+    var game = Koncentration(numberOfPairsOfCards: 4)
     
     var flipCount = 0 {
         didSet {
