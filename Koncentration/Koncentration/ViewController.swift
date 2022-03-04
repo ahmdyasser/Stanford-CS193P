@@ -8,12 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var counterLabel: UILabel!
+    
+    var flipCount = 0 {
+        didSet {
+            counterLabel.text = "Counter: \(flipCount)"
+        }
     }
-
-
+    let emojiChoices = ["🦷", "👃", "🦷", "👃",]
+    
+    @IBOutlet var cardButtons: [UIButton]!
+    
+    @IBAction func touchCard(_ sender: UIButton) {
+        flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
+        } else {
+            print("the card has no index")
+        }
+    }
+    func flipCard(withEmoji emoji: String, on button: UIButton) {
+        if button.currentTitle == emoji {
+            button.setTitle("", for: .normal)
+            button.backgroundColor = .orange
+        } else {
+            button.setTitle(emoji, for: .normal)
+        }
+    }
 }
 
