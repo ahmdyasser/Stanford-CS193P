@@ -38,3 +38,4 @@ class ViewController: UIViewController {
     }
 }
 
+String(data: "", encoding: NSUTF8StringEncoding)
