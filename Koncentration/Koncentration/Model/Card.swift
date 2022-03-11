@@ -10,13 +10,16 @@ import Foundation
 struct Card {
     var isFacedUp = false
     var isMatched = false
-    var identifier: Int
     
-    func getUniqueId() -> UUID {
-        return UUID()
+    var identifier: Int
+    static var idFactory = 0
+    
+    static func getUniqueId() -> Int {
+        idFactory += 1
+        return idFactory
     }
     
     init(identifier: Int) {
-        self.identifier = identifier
+        self.identifier = Card.getUniqueId()
     }
 }
